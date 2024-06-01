@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Times New Roman', serif;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    padding: 30px 60px;
+    border: 4px solid black;
+    border-radius: 8px;
+    height: 50vh;
+}
+
+.display {
+    text-align: right;
+    border: 1px solid black;
+    border-radius: 9px;
+    width: 11rem;
+    height: 2rem;
+    padding: 1rem 0.5rem;
+    background-color: hsl(0, 7%, 80%);
+    margin-bottom: 3vh;
+    font-size: 24px;
+}
+
+.keypad {
+    display: flex;
+    flex-wrap: wrap;
+    width: 12em;
+    justify-content: space-evenly;
+    gap: 0.5em;
+}
+
+button {
+    background-color: #BB23DC;
+    border: 1px solid black;
+    border-radius: 3em;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+}
+
+.operation {
+    background-color: #DCBB23;
+}
+
+.special-0 {
+    flex: 0.9;
+    text-align: left;
+    padding-left: 1em;
+}
