@@ -2,11 +2,14 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     font-family: 'Times New Roman', serif;
+    background-color: aliceblue; /* For browsers that don't support gradients */
+    background-image: linear-gradient(to bottom right, lightblue, white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator {
@@ -40,7 +43,7 @@ body {
 }
 
 button {
-    background-color: #BB23DC;
+    background-color: #d17be4;
     border: 1px solid black;
     border-radius: 3em;
     cursor: pointer;
@@ -65,4 +68,19 @@ button:hover {
     flex: 0.9;
     text-align: left;
     padding-left: 1em;
+}
+
+.footer {
+    background-color: #1F2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: lighter;
+    color: #F9FAF8;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
