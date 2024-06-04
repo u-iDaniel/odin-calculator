@@ -62,6 +62,16 @@ function countDigits(num) {
     return [...String(num)].filter(element => digits.includes(element)).join("").length;
 }
 
+function deleteDigit(num) {
+    if (String(num).length <= 1) {
+        return 0;
+    } else {
+        new_num = [...String(num)]
+        new_num.pop();
+        return new_num.join("");
+    }
+}
+
 calculator.addEventListener("click", (event) => {
 
     const target = event.target;
@@ -71,18 +81,19 @@ calculator.addEventListener("click", (event) => {
     }
 
     if (isNumeric(target.innerText) && countDigits(displayValue) <= MAX_DISPLAY_DIGITS) {
-        // Reset calculator since new numbers are being entered
+        // Reset calculator since new numbers are being entered or numA was completely deleted
         if (typeof numA === 'number' && !operator) { 
             resetCalculator();
             numA += target.innerText;
         // First number has been inputted already
         } else if (typeof numA === 'number' 
         && (numB && countDigits(displayValue) + 1 <= MAX_DISPLAY_DIGITS || !numB)) { 
+            if (numB === 0) numB = '';
             numB += target.innerText;
         } else if (countDigits(displayValue) + 1 <= MAX_DISPLAY_DIGITS) {
             numA += target.innerText;
         }
-    } else if (target.className === 'operation' && numB) {
+    } else if (target.className === 'operation' && (numB || numB === 0)) {
         numB = +numB;
         numA = operate(numA, numB, operator);
         numB = '';
@@ -92,12 +103,21 @@ calculator.addEventListener("click", (event) => {
         operator = target.id;
         numA = +numA;
         // Add active display here maybe
+    } else if (target.id === 'del') {
+        // Make sure numA doesn't appear once numB gets completely deleted
+        if ((numB || numB === 0) && operator) {
+            numB = deleteDigit(numB);
+        } else {
+            numA = deleteDigit(numA);
+        }
     }
 
-    if (numB) {
+    if (numB || numB === 0) {
         displayValue = numB;
-    } else {
+    } else if (numA) {
         displayValue = countDigits(numA) > MAX_DISPLAY_DIGITS ? cutDigits(numA) : numA;
+    } else {
+        displayValue = 0;
     }
 
     if (numA === 'Error!') {
