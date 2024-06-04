@@ -72,6 +72,10 @@ function deleteDigit(num) {
     }
 }
 
+function flipSign(num) {
+    return String(num) === '0' ? 0 : String(+num * -1);
+}
+
 calculator.addEventListener("click", (event) => {
 
     const target = event.target;
@@ -109,6 +113,12 @@ calculator.addEventListener("click", (event) => {
             numB = deleteDigit(numB);
         } else {
             numA = deleteDigit(numA);
+        }
+    } else if (target.id === 'sign-flip') {
+        if ((numB || numB === 0)) {
+            numB = flipSign(numB);
+        } else {
+            numA = flipSign(numA);
         }
     }
 
