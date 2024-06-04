@@ -76,6 +76,15 @@ function flipSign(num) {
     return String(num) === '0' ? 0 : String(+num * -1);
 }
 
+function addDecimal(num) {
+    if (String(num).includes(".")) return num;
+    if (num === '') {
+        return "0.";
+    } else {
+        return String(num) + "."; 
+    }
+}
+
 calculator.addEventListener("click", (event) => {
 
     const target = event.target;
@@ -119,6 +128,12 @@ calculator.addEventListener("click", (event) => {
             numB = flipSign(numB);
         } else {
             numA = flipSign(numA);
+        }
+    } else if (target.innerText === '.') {
+        if ((numB || numB === 0)) {
+            numB = addDecimal(numB);
+        } else {
+            numA = addDecimal(numA);
         }
     }
 
