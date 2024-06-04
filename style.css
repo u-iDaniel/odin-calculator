@@ -56,6 +56,11 @@ button:hover {
     background-color: #DCBB23;
 }
 
+.operation:not(#\=):focus {
+    background-color: white;
+    color: black;
+}
+
 .special-0 {
     flex: 0.9;
     text-align: left;
